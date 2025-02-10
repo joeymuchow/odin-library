@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+
+.book-shelf {
+    padding: 10px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.book {
+    border: 1px solid #333333;
+    border-radius: 10px;
+    text-align: center;
+}
