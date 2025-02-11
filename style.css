@@ -12,7 +12,23 @@ h1 {
 .book {
     border: 1px solid #333333;
     border-radius: 10px;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
+}
+
+.book h2, .book h3, p {
+    margin: 0;
+}
+
+.book-read-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 10px;
 }
 
 .new-book-container {
@@ -50,8 +66,4 @@ form {
 
 .close-modal {
     cursor: pointer;
-}
-
-.remove-book {
-    margin-bottom: 15px;
 }
