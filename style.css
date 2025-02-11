@@ -15,6 +15,10 @@ h1 {
     text-align: center;
 }
 
+.new-book-container {
+    text-align: center;
+}
+
 dialog {
     width: clamp(300px, 60%, 450px);
     padding: clamp(2px, 3%, 20px);
@@ -46,4 +50,8 @@ form {
 
 .close-modal {
     cursor: pointer;
+}
+
+.remove-book {
+    margin-bottom: 15px;
 }

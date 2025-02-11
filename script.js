@@ -26,7 +26,16 @@ function submitForm(e) {
             this.elements.read.value === "yes",
         );
         displayLibrary();
+        form.reset();
+        modal.close();
     }
+}
+
+function removeBook(e) {
+    console.log(e);
+    const id = Number(e.target.dataset.id);
+    myLibrary.splice(id, 1);
+    displayLibrary();
 }
 
 function Book(title, author, pages, read) {
@@ -49,24 +58,30 @@ function displayLibrary() {
     // Clear bookShelf
     bookShelf.replaceChildren();
 
-    for (const book of myLibrary) {
+    for (let i = 0; i < myLibrary.length; i++) {
         const bookContainer = document.createElement("div");
         bookContainer.setAttribute("class", "book");
         
         const bookTitle = document.createElement("h3");
-        bookTitle.textContent = book.title;
+        bookTitle.textContent = myLibrary[i].title;
         
         const bookAuthor = document.createElement("h4");
-        bookAuthor.textContent = book.author;
+        bookAuthor.textContent = myLibrary[i].author;
         
         const bookPages = document.createElement("p");
-        bookPages.textContent = book.pages + " pages";
+        bookPages.textContent = myLibrary[i].pages + " pages";
         
         const bookRead = document.createElement("p");
-        const yesNo = book.read ? "Yes" : "No";
+        const yesNo = myLibrary[i].read ? "Yes" : "No";
         bookRead.textContent = "Read? " + yesNo;
 
-        bookContainer.append(bookTitle, bookAuthor, bookPages, bookRead);
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove book";
+        removeBtn.setAttribute("class", "remove-book");
+        removeBtn.setAttribute("data-id", i);
+        removeBtn.addEventListener("click", removeBook);
+
+        bookContainer.append(bookTitle, bookAuthor, bookPages, bookRead, removeBtn);
         bookShelf.append(bookContainer);
     }
 }
