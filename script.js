@@ -1,5 +1,34 @@
 const myLibrary = [];
 
+const modal = document.querySelector(".new-book-modal");
+const form = document.querySelector(".new-book-form");
+document.querySelector(".new-book").addEventListener("click", newBook);
+document.querySelector(".close-modal").addEventListener("click", closeModal);
+form.addEventListener("submit", submitForm);
+
+function newBook() {
+    modal.showModal();
+}
+
+function closeModal(e) {
+    e.preventDefault();
+    modal.close();
+    form.reset();
+}
+
+function submitForm(e) {
+    e.preventDefault();
+    if (form.reportValidity()) {
+        addBookToLibrary(
+            this.elements.title.value,
+            this.elements.author.value,
+            this.elements.pages.value,
+            this.elements.read.value === "yes",
+        );
+        displayLibrary();
+    }
+}
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -41,28 +70,3 @@ function displayLibrary() {
         bookShelf.append(bookContainer);
     }
 }
-
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "300", false);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-addBookToLibrary("Test", "Test Author", "1000", true);
-
-displayLibrary();
